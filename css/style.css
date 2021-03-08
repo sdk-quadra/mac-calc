@@ -1,0 +1,59 @@
+#app {
+  color: black; }
+
+.wrapper {
+  margin: 0 auto;
+  width: 200px;
+  color: white; }
+
+.result {
+  background-color: #2F3849;
+  border-radius: 5px 5px 0 0;
+  padding-top: 0.5rem; }
+
+.buttons {
+  display: flex; }
+
+.display {
+  text-align: right;
+  margin-right: 14px;
+  font-size: 32px; }
+
+.operations {
+  background-color: #454D5C; }
+  .operations > .row {
+    display: flex; }
+
+.numbers {
+  background-color: #656C78;
+  border-radius: 0 0 0 5px; }
+  .numbers > .row {
+    display: flex; }
+
+.arithmetics {
+  background-color: #EFA03B;
+  border-radius: 0 0 5px 0; }
+
+.cell {
+  width: 50px; }
+
+.double-cell {
+  width: 100px;
+  border-radius: 0 0 0 5px; }
+
+.last-cell {
+  border-radius: 0 0 5px 0; }
+
+.cell, .double-cell {
+  text-align: center;
+  height: 40px;
+  border: 0.9px solid #374151;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .cell:hover, .double-cell:hover {
+    background-color: #4E4E4F; }
+
+/*# sourceMappingURL=style.css.map */

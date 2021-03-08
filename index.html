@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <link rel="stylesheet" href="css/style.css">
+	  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">{{message}}
+		<ol>
+			<todo-items></todo-items>
+		</ol>
+	
+
+		<div class="wrapper">
+			<div class="result">
+				<div class="display">
+					{{ display }}
+				</div>
+			</div>
+			<div class="buttons">
+				<div class="values">
+					<div class="operations">
+						<div class="row">
+							<div class="cell" v-on:click="ac">AC</div>
+							<div class="cell">+/-</div>
+							<div class="cell">%</div>
+						</div>
+					</div>
+					<div class="numbers" v-on:click="number">
+						<div class="row">
+							<div class="cell">7</div>
+							<div class="cell">8</div>
+							<div class="cell">9</div>
+						</div>
+						<div class="row">
+							<div class="cell">4</div>
+							<div class="cell">5</div>
+							<div class="cell">6</div>
+						</div>
+						<div class="row">
+							<div class="cell">1</div>
+							<div class="cell">2</div>
+							<div class="cell">3</div>
+						</div>
+						<div class="row">
+							<div class="double-cell">0</div>
+							<div class="cell">.</div>
+						</div>
+					</div>
+				</div>
+				<div class="arithmetics">
+					<div class="cell">÷</div>
+					<div class="cell">x</div>
+					<div class="cell">-</div>
+					<div class="cell" v-on:click="plus">+</div>
+					<div class="cell last-cell">=</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="./js/script.js"></script>
+  
+</body>
+</html>
