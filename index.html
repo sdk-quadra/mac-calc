@@ -46,11 +46,11 @@
 					</div>
 				</div>
 				<div class="arithmetics">
-					<div class="cell">÷</div>
-					<div class="cell">x</div>
+					<div class="cell" v-on:click="divide">÷</div>
+					<div class="cell" v-on:click="times">x</div>
 					<div class="cell" v-on:click="minus">-</div>
 					<div class="cell" v-on:click="plus">+</div>
-					<div class="cell last-cell">=</div>
+					<div class="cell last-cell" v-on:click="equal">=</div>
 				</div>
 			</div>
 		</div>

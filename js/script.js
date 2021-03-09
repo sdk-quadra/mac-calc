@@ -5,14 +5,16 @@ var app = new Vue({
 		display: 0,
 		arithmetic: null,
 		inputArithmetic: false,
-		inputNum: false,
 		preNum: false,
 		currentNum: 0,
 		result: 0
 	},
 	methods: {
 		number: function(event) {
-			if (this.inputArithmetic) { this.display = 0; this.inputArithmetic = false}
+			if (this.inputArithmetic) {
+				this.display = 0
+				this.inputArithmetic = false
+			}
 
 			let display = event.target.innerHTML
 
@@ -32,34 +34,33 @@ var app = new Vue({
 		},
 		plus: function() {
 
-			if (this.inputArithmetic == true) {
-				this.arithmetic = ('plus')
+			this.calculator('plus')
 
-			} else if (this.preNum) {
-
-				if (this.arithmetic == 'plus') {
-					this.result = this.result + this.currentNum
-
-				} else if (this.arithmetic == 'minus') {
-					this.result = this.result - this.currentNum
-				}
-
-			} else if (this.currentNum) {
-				this.result = this.currentNum
-			}
-
-			this.display = this.result
-
-			this.inputArithmetic = true
-
-			this.preNum = this.currentNum
-
-			this.arithmetic = ('plus')
 		},
 		minus: function() {
 
+			this.calculator('minus')
+
+		},
+		times: function() {
+
+			this.calculator('times')
+
+		},
+		divide: function() {
+
+			this.calculator('divide')
+
+		},
+		equal: function() {
+
+			this.calculator('equal')
+
+		},
+		calculator: function(e) {
+
 			if (this.inputArithmetic == true) {
-				this.arithmetic = ('minus')
+				this.arithmetic = (e) // -の直後+押したら
 
 			} else if (this.preNum) {
 
@@ -68,6 +69,12 @@ var app = new Vue({
 
 				} else if (this.arithmetic == 'minus') {
 					this.result = this.result - this.currentNum
+				} else if (this.arithmetic == 'times') {
+					this.result = this.result * this.currentNum
+				} else if (this.arithmetic == 'divide') {
+					this.result = this.result / this.currentNum
+				} else if (this.arithmetic == 'equal') {
+					this.result = this.currentNum
 				}
 
 			} else if (this.currentNum) {
@@ -75,15 +82,9 @@ var app = new Vue({
 			}
 
 			this.display = this.result
-
 			this.inputArithmetic = true
-
 			this.preNum = this.currentNum
-
-			this.arithmetic = ('minus')
-		},
-		arithmeticStatus: function(e) {
-			this.arithmeticStatus = e
+			this.arithmetic = (e)
 		}
 	}
 })
