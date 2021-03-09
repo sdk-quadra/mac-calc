@@ -1,51 +1,89 @@
-Vue.component('todo-items', {
-		template: '<li>this is template. please edit this.</li>'
-})
-
 var app = new Vue({
 	el: '#app',
 	data: {
-		message: 'Hello Vue!',
-		lists: [
-			{list: 'kobe'},
-			{list: 'osaka'},
-			{list: 'shiga'}
-		],
+		message: 'Hello Mac Calc!',
 		display: 0,
 		arithmetic: null,
-		inputFinish: false,
-		preNum: null,
-		currentNum: null
+		inputArithmetic: false,
+		inputNum: false,
+		preNum: false,
+		currentNum: 0,
+		result: 0
 	},
 	methods: {
-		swapPrefecture: function(){
-			this.lists = [
-				{list: 'nara'},
-				{list: 'mie'},
-				{list: 'wakayama'}
-			]
-		},
 		number: function(event) {
-			// arithmeticに値があったら、0表示
-			if (this.inputFinish) { this.display = 0; this.inputFinish = false}
-			let display = event.target.innerHTML
-			this.display += display
-			this.display = parseInt(this.display)
+			if (this.inputArithmetic) { this.display = 0; this.inputArithmetic = false}
 
-			this.currentNum = display
+			let display = event.target.innerHTML
+
+			if (this.display == 0) {
+				this.display = display
+			} else {
+				this.display += display
+			}
+
+			this.currentNum = parseInt(this.display)
+
 		},
 		ac: function() {
 			this.display = 0
+			this.currentNum = null
+			this.result = 0
 		},
 		plus: function() {
-			if (this.arithmetic == 'plus' && this.preNum) {
-				this.display = parseInt(this.preNum) + parseInt(this.currentNum)
+
+			if (this.inputArithmetic == true) {
+				this.arithmetic = ('plus')
+
+			} else if (this.preNum) {
+
+				if (this.arithmetic == 'plus') {
+					this.result = this.result + this.currentNum
+
+				} else if (this.arithmetic == 'minus') {
+					this.result = this.result - this.currentNum
+				}
+
+			} else if (this.currentNum) {
+				this.result = this.currentNum
 			}
 
+			this.display = this.result
 
-			this.arithmetic = 'plus',
-			this.inputFinish = true
+			this.inputArithmetic = true
+
 			this.preNum = this.currentNum
+
+			this.arithmetic = ('plus')
+		},
+		minus: function() {
+
+			if (this.inputArithmetic == true) {
+				this.arithmetic = ('minus')
+
+			} else if (this.preNum) {
+
+				if (this.arithmetic == 'plus') {
+					this.result = this.result + this.currentNum
+
+				} else if (this.arithmetic == 'minus') {
+					this.result = this.result - this.currentNum
+				}
+
+			} else if (this.currentNum) {
+				this.result = this.currentNum
+			}
+
+			this.display = this.result
+
+			this.inputArithmetic = true
+
+			this.preNum = this.currentNum
+
+			this.arithmetic = ('minus')
+		},
+		arithmeticStatus: function(e) {
+			this.arithmeticStatus = e
 		}
 	}
 })
