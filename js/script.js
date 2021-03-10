@@ -7,7 +7,9 @@ var app = new Vue({
 		inputArithmetic: false,
 		preNum: false,
 		currentNum: 0,
-		result: 0
+		inversed: false,
+		result: 0,
+
 	},
 	methods: {
 		number: function(event) {
@@ -31,6 +33,19 @@ var app = new Vue({
 			this.display = 0
 			this.currentNum = null
 			this.result = 0
+		},
+		inverse: function() {
+
+			if (this.inversed) {
+				this.currentNum = this.display
+			}
+
+			this.currentNum = -this.currentNum
+			this.display = this.currentNum
+			this.result = this.display
+
+			this.inversed = true
+
 		},
 		plus: function() {
 
