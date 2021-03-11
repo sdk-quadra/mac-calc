@@ -5,6 +5,7 @@ var app = new Vue({
 		display: 0,
 		arithmetic: null,
 		inputArithmetic: false,
+		inputDot: false,
 		preNum: false,
 		currentNum: 0,
 		inversed: false,
@@ -18,15 +19,23 @@ var app = new Vue({
 				this.inputArithmetic = false
 			}
 
-			let display = event.target.innerHTML
+			const display = event.target.innerHTML
 
-			if (this.display == 0) {
-				this.display = display
-			} else {
+			if (this.display == 0 && display !== '.' && !this.inputDot) {
+
+				this.display = parseFloat(display)
+
+			} else if (display == '.' && !this.inputDot) {
+
+				this.display += '.'
+				this.inputDot = true
+
+			} else if (display !== '.') {
+				console.log(display)
 				this.display += display
 			}
 
-			this.currentNum = parseInt(this.display)
+			this.currentNum = parseFloat(this.display)
 
 		},
 		ac: function() {
@@ -98,6 +107,7 @@ var app = new Vue({
 
 			this.display = this.result
 			this.inputArithmetic = true
+			this.inputDot = false
 			this.preNum = this.currentNum
 			this.arithmetic = (e)
 		}
