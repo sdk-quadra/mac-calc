@@ -8,9 +8,7 @@ var app = new Vue({
 		inputDot: false,
 		preNum: false,
 		currentNum: 0,
-		inversed: false,
 		result: 0,
-
 	},
 	methods: {
 		number: function(event) {
@@ -45,15 +43,16 @@ var app = new Vue({
 		},
 		inverse: function() {
 
-			if (this.inversed) {
-				this.currentNum = this.display
-			}
+			this.calculator('inverse')
+			this.result = -this.result
+			this.display = this.result
 
-			this.currentNum = -this.currentNum
-			this.display = this.currentNum
-			this.result = this.display
+		},
+		percent: function() {
 
-			this.inversed = true
+			this.calculator('percent')
+			this.result /= 100
+			this.display = this.result
 
 		},
 		plus: function() {
